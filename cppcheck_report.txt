@@ -1,0 +1,749 @@
+elk.c:1396:3: error: Address of local auto-variable assigned to a function parameter. [autoVariables]
+  js->cstk = &res;
+  ^
+elk.c:769:9: style: Redundant initialization for 'res'. The initialized value is overwritten before it is read. [redundantInitialization]
+    res = call_js(js, (const char *) (&js->mem[fnoff]), fnlen);
+        ^
+elk.c:765:15: note: res is initialized
+  jsval_t res = js_mkundef();
+              ^
+elk.c:769:9: note: res is overwritten
+    res = call_js(js, (const char *) (&js->mem[fnoff]), fnlen);
+        ^
+elk.c:240:45: style:inconclusive: Function 'js_mkerr' argument 2 names different: declaration 'fmt' definition 'xx'. [funcArgNamesDifferent]
+jsval_t js_mkerr(struct js *js, const char *xx, ...) {
+                                            ^
+elk.h:48:45: note: Function 'js_mkerr' argument 2 names different: declaration 'fmt' definition 'xx'.
+jsval_t js_mkerr(struct js *js, const char *fmt, ...);         // Create error
+                                            ^
+elk.c:240:45: note: Function 'js_mkerr' argument 2 names different: declaration 'fmt' definition 'xx'.
+jsval_t js_mkerr(struct js *js, const char *xx, ...) {
+                                            ^
+elk.c:268:43: style:inconclusive: Function 'js_str' argument 2 names different: declaration 'val' definition 'value'. [funcArgNamesDifferent]
+const char *js_str(struct js *js, jsval_t value) {
+                                          ^
+elk.h:34:41: note: Function 'js_str' argument 2 names different: declaration 'val' definition 'value'.
+const char *js_str(struct js *, jsval_t val);        // Stringify JS value
+                                        ^
+elk.c:268:43: note: Function 'js_str' argument 2 names different: declaration 'val' definition 'value'.
+const char *js_str(struct js *js, jsval_t value) {
+                                          ^
+elk.c:780:57: style:inconclusive: Function 'do_op' argument 3 names different: declaration 'l' definition 'lhs'. [funcArgNamesDifferent]
+static jsval_t do_op(struct js *js, uint8_t op, jsval_t lhs, jsval_t rhs) {
+                                                        ^
+elk.c:173:55: note: Function 'do_op' argument 3 names different: declaration 'l' definition 'lhs'.
+static jsval_t do_op(struct js *, uint8_t op, jsval_t l, jsval_t r);
+                                                      ^
+elk.c:780:57: note: Function 'do_op' argument 3 names different: declaration 'l' definition 'lhs'.
+static jsval_t do_op(struct js *js, uint8_t op, jsval_t lhs, jsval_t rhs) {
+                                                        ^
+elk.c:780:70: style:inconclusive: Function 'do_op' argument 4 names different: declaration 'r' definition 'rhs'. [funcArgNamesDifferent]
+static jsval_t do_op(struct js *js, uint8_t op, jsval_t lhs, jsval_t rhs) {
+                                                                     ^
+elk.c:173:66: note: Function 'do_op' argument 4 names different: declaration 'r' definition 'rhs'.
+static jsval_t do_op(struct js *, uint8_t op, jsval_t l, jsval_t r);
+                                                                 ^
+elk.c:780:70: note: Function 'do_op' argument 4 names different: declaration 'r' definition 'rhs'.
+static jsval_t do_op(struct js *js, uint8_t op, jsval_t lhs, jsval_t rhs) {
+                                                                     ^
+elk.c:1342:26: style:inconclusive: Function 'js_getnum' argument 1 names different: declaration 'val' definition 'value'. [funcArgNamesDifferent]
+double js_getnum(jsval_t value) { return tod(value); }
+                         ^
+elk.h:56:26: note: Function 'js_getnum' argument 1 names different: declaration 'val' definition 'value'.
+double js_getnum(jsval_t val);  // Get number
+                         ^
+elk.c:1342:26: note: Function 'js_getnum' argument 1 names different: declaration 'val' definition 'value'.
+double js_getnum(jsval_t value) { return tod(value); }
+                         ^
+elk.c:1343:24: style:inconclusive: Function 'js_getbool' argument 1 names different: declaration 'val' definition 'value'. [funcArgNamesDifferent]
+int js_getbool(jsval_t value) { return vdata(value) & 1 ? 1 : 0; }
+                       ^
+elk.h:57:24: note: Function 'js_getbool' argument 1 names different: declaration 'val' definition 'value'.
+int js_getbool(jsval_t val);    // Get boolean, 0 or 1
+                       ^
+elk.c:1343:24: note: Function 'js_getbool' argument 1 names different: declaration 'val' definition 'value'.
+int js_getbool(jsval_t value) { return vdata(value) & 1 ? 1 : 0; }
+                       ^
+elk.c:1351:40: style:inconclusive: Function 'js_getstr' argument 2 names different: declaration 'val' definition 'value'. [funcArgNamesDifferent]
+char *js_getstr(struct js *js, jsval_t value, size_t *len) {
+                                       ^
+elk.h:58:40: note: Function 'js_getstr' argument 2 names different: declaration 'val' definition 'value'.
+char *js_getstr(struct js *js, jsval_t val, size_t *len);  // Get string
+                                       ^
+elk.c:1351:40: note: Function 'js_getstr' argument 2 names different: declaration 'val' definition 'value'.
+char *js_getstr(struct js *js, jsval_t value, size_t *len) {
+                                       ^
+elk.c:1369:53: style:inconclusive: Function 'js_stats' argument 3 names different: declaration 'min' definition 'lwm'. [funcArgNamesDifferent]
+void js_stats(struct js *js, size_t *total, size_t *lwm, size_t *css) {
+                                                    ^
+elk.h:38:51: note: Function 'js_stats' argument 3 names different: declaration 'min' definition 'lwm'.
+void js_stats(struct js *, size_t *total, size_t *min, size_t *cstacksize);
+                                                  ^
+elk.c:1369:53: note: Function 'js_stats' argument 3 names different: declaration 'min' definition 'lwm'.
+void js_stats(struct js *js, size_t *total, size_t *lwm, size_t *css) {
+                                                    ^
+elk.c:1369:66: style:inconclusive: Function 'js_stats' argument 4 names different: declaration 'cstacksize' definition 'css'. [funcArgNamesDifferent]
+void js_stats(struct js *js, size_t *total, size_t *lwm, size_t *css) {
+                                                                 ^
+elk.h:38:64: note: Function 'js_stats' argument 4 names different: declaration 'cstacksize' definition 'css'.
+void js_stats(struct js *, size_t *total, size_t *min, size_t *cstacksize);
+                                                               ^
+elk.c:1369:66: note: Function 'js_stats' argument 4 names different: declaration 'cstacksize' definition 'css'.
+void js_stats(struct js *js, size_t *total, size_t *lwm, size_t *css) {
+                                                                 ^
+elk.c:195:11: style: Local variable 'next' shadows outer function [shadowFunction]
+  jsoff_t next = loadoff(js, (jsoff_t) vdata(obj)) & ~3U;  // First prop offset
+          ^
+elk.c:485:16: note: Shadowed declaration
+static uint8_t next(struct js *js) {
+               ^
+elk.c:195:11: note: Shadow variable
+  jsoff_t next = loadoff(js, (jsoff_t) vdata(obj)) & ~3U;  // First prop offset
+          ^
+examples/Esp32JS/mongoose.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 53 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+src/base64.c:38:7: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+      ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:74:58: note: Calling function 'mg_base64_update', 2nd argument 'buf' value is lifetime=buf
+
+                                                         ^
+src/base64.c:38:7: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+      ^
+src/base64.c:39:7: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+      ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:74:58: note: Calling function 'mg_base64_update', 2nd argument 'buf' value is lifetime=buf
+
+                                                         ^
+src/base64.c:39:7: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+      ^
+src/base64.c:41:7: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+      ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:74:58: note: Calling function 'mg_base64_update', 2nd argument 'buf' value is lifetime=buf
+
+                                                         ^
+src/base64.c:41:7: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+      ^
+src/base64.c:42:7: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+      ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:74:58: note: Calling function 'mg_base64_update', 2nd argument 'buf' value is lifetime=buf
+
+                                                         ^
+src/base64.c:42:7: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+      ^
+src/base64.c:44:7: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+      ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:74:58: note: Calling function 'mg_base64_update', 2nd argument 'buf' value is lifetime=buf
+
+                                                         ^
+src/base64.c:44:7: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+      ^
+src/base64.c:45:7: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+      ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:74:58: note: Calling function 'mg_base64_update', 2nd argument 'buf' value is lifetime=buf
+
+                                                         ^
+src/base64.c:45:7: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+      ^
+src/base64.c:57:19: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+                  ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:82:25: note: Calling function 'mg_base64_final', 1st argument 'buf' value is lifetime=buf
+
+                        ^
+src/base64.c:57:19: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+                  ^
+src/base64.c:58:5: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+    ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:82:25: note: Calling function 'mg_base64_final', 1st argument 'buf' value is lifetime=buf
+
+                        ^
+src/base64.c:58:5: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+    ^
+src/http.c:72:16: error: The address of local variable 'buf' is accessed at non-zero index. [objectIndex]
+
+               ^
+src/http.c:71:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:72:16: note: The address of local variable 'buf' is accessed at non-zero index.
+
+               ^
+src/http.c:774:25: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+                        ^
+src/http.c:787:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:789:34: note: Address of variable taken here.
+
+                                 ^
+src/http.c:789:34: note: Calling function 'get_chunk_length', 1st argument '&buf[off]' value is lifetime=buf
+
+                                 ^
+src/http.c:774:25: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+                        ^
+src/http.c:774:25: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+                        ^
+src/http.c:801:31: note: Address of variable taken here.
+
+                              ^
+src/http.c:803:39: note: Address of variable taken here.
+
+                                      ^
+src/http.c:803:39: note: Calling function 'get_chunk_length', 1st argument '&buf2[off]' value is lifetime=buf
+
+                                      ^
+src/http.c:774:25: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+                        ^
+src/http.c:789:38: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+                                     ^
+src/http.c:787:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:789:38: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+                                     ^
+src/http.c:792:30: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+                             ^
+src/http.c:787:26: note: Address of variable taken here.
+
+                         ^
+src/http.c:791:12: note: Assuming condition is false
+
+           ^
+src/http.c:792:30: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+                             ^
+src/http.c:803:44: warning: The address of local variable 'buf' might be accessed at non-zero index. [objectIndex]
+
+                                           ^
+src/http.c:801:31: note: Address of variable taken here.
+
+                              ^
+src/http.c:803:44: note: The address of local variable 'buf' might be accessed at non-zero index.
+
+                                           ^
+src/str.c:188:74: warning: The address of local variable 'ptr' might be accessed at non-zero index. [objectIndex]
+
+                                                                         ^
+src/net.c:110:23: note: Address of variable taken here.
+
+                      ^
+src/net.c:110:23: note: Calling function 'mg_unhexn', 1st argument '&str.ptr[j]' value is lifetime=ptr
+
+                      ^
+src/str.c:188:74: note: The address of local variable 'ptr' might be accessed at non-zero index.
+
+                                                                         ^
+src/dns.c:243:10: style: The scope of the variable 'buf' can be reduced. [variableScope]
+
+         ^
+src/fmt.c:182:17: style: The scope of the variable 'k' can be reduced. [variableScope]
+
+                ^
+src/mqtt.c:34:8: style: The scope of the variable 'rnd' can be reduced. [variableScope]
+
+       ^
+src/mqtt.c:34:17: style: The scope of the variable 'client_id' can be reduced. [variableScope]
+
+                ^
+src/sock.c:127:12: style: The scope of the variable 't1' can be reduced. [variableScope]
+
+           ^
+src/sock.c:127:20: style: The scope of the variable 't2' can be reduced. [variableScope]
+
+                   ^
+src/ws.c:66:10: style: The scope of the variable 'i' can be reduced. [variableScope]
+
+         ^
+src/ws.c:66:13: style: The scope of the variable 'n' can be reduced. [variableScope]
+
+            ^
+src/base64.c:35:36: style:inconclusive: Function 'mg_base64_update' argument 1 names different: declaration 'p' definition 'ch'. [funcArgNamesDifferent]
+
+                                   ^
+examples/Esp32JS/mongoose.h:919:36: note: Function 'mg_base64_update' argument 1 names different: declaration 'p' definition 'ch'.
+int mg_base64_update(unsigned char p, char *to, int len);
+                                   ^
+src/base64.c:35:36: note: Function 'mg_base64_update' argument 1 names different: declaration 'p' definition 'ch'.
+
+                                   ^
+src/base64.c:35:54: style:inconclusive: Function 'mg_base64_update' argument 3 names different: declaration 'len' definition 'n'. [funcArgNamesDifferent]
+
+                                                     ^
+examples/Esp32JS/mongoose.h:919:53: note: Function 'mg_base64_update' argument 3 names different: declaration 'len' definition 'n'.
+int mg_base64_update(unsigned char p, char *to, int len);
+                                                    ^
+src/base64.c:35:54: note: Function 'mg_base64_update' argument 3 names different: declaration 'len' definition 'n'.
+
+                                                     ^
+src/base64.c:51:35: style:inconclusive: Function 'mg_base64_final' argument 2 names different: declaration 'len' definition 'n'. [funcArgNamesDifferent]
+
+                                  ^
+examples/Esp32JS/mongoose.h:920:35: note: Function 'mg_base64_final' argument 2 names different: declaration 'len' definition 'n'.
+int mg_base64_final(char *to, int len);
+                                  ^
+src/base64.c:51:35: note: Function 'mg_base64_final' argument 2 names different: declaration 'len' definition 'n'.
+
+                                  ^
+src/dbl.c:4:28: style:inconclusive: Function 'mg_atod' argument 1 names different: declaration 'buf' definition 'p'. [funcArgNamesDifferent]
+
+                           ^
+examples/Esp32JS/mongoose.h:748:28: note: Function 'mg_atod' argument 1 names different: declaration 'buf' definition 'p'.
+double mg_atod(const char *buf, int len, int *numlen);
+                           ^
+src/dbl.c:4:28: note: Function 'mg_atod' argument 1 names different: declaration 'buf' definition 'p'.
+
+                           ^
+src/dbl.c:81:22: style:inconclusive: Function 'mg_dtoa' argument 1 names different: declaration 'buf' definition 'dst'. [funcArgNamesDifferent]
+
+                     ^
+examples/Esp32JS/mongoose.h:749:22: note: Function 'mg_dtoa' argument 1 names different: declaration 'buf' definition 'dst'.
+size_t mg_dtoa(char *buf, size_t len, double d, int width);
+                     ^
+src/dbl.c:81:22: note: Function 'mg_dtoa' argument 1 names different: declaration 'buf' definition 'dst'.
+
+                     ^
+src/dbl.c:81:34: style:inconclusive: Function 'mg_dtoa' argument 2 names different: declaration 'len' definition 'dstlen'. [funcArgNamesDifferent]
+
+                                 ^
+examples/Esp32JS/mongoose.h:749:34: note: Function 'mg_dtoa' argument 2 names different: declaration 'len' definition 'dstlen'.
+size_t mg_dtoa(char *buf, size_t len, double d, int width);
+                                 ^
+src/dbl.c:81:34: note: Function 'mg_dtoa' argument 2 names different: declaration 'len' definition 'dstlen'.
+
+                                 ^
+src/fs.c:25:64: style:inconclusive: Function 'mg_file_read' argument 3 names different: declaration 'size' definition 'sizep'. [funcArgNamesDifferent]
+
+                                                               ^
+examples/Esp32JS/mongoose.h:855:64: note: Function 'mg_file_read' argument 3 names different: declaration 'size' definition 'sizep'.
+char *mg_file_read(struct mg_fs *fs, const char *path, size_t *size);
+                                                               ^
+src/fs.c:25:64: note: Function 'mg_file_read' argument 3 names different: declaration 'size' definition 'sizep'.
+
+                                                               ^
+src/http.c:127:31: style:inconclusive: Function 'mg_url_decode' argument 1 names different: declaration 's' definition 'src'. [funcArgNamesDifferent]
+
+                              ^
+examples/Esp32JS/mongoose.h:1132:31: note: Function 'mg_url_decode' argument 1 names different: declaration 's' definition 'src'.
+int mg_url_decode(const char *s, size_t n, char *to, size_t to_len, int form);
+                              ^
+src/http.c:127:31: note: Function 'mg_url_decode' argument 1 names different: declaration 's' definition 'src'.
+
+                              ^
+src/http.c:127:43: style:inconclusive: Function 'mg_url_decode' argument 2 names different: declaration 'n' definition 'src_len'. [funcArgNamesDifferent]
+
+                                          ^
+examples/Esp32JS/mongoose.h:1132:41: note: Function 'mg_url_decode' argument 2 names different: declaration 'n' definition 'src_len'.
+int mg_url_decode(const char *s, size_t n, char *to, size_t to_len, int form);
+                                        ^
+src/http.c:127:43: note: Function 'mg_url_decode' argument 2 names different: declaration 'n' definition 'src_len'.
+
+                                          ^
+src/http.c:127:58: style:inconclusive: Function 'mg_url_decode' argument 3 names different: declaration 'to' definition 'dst'. [funcArgNamesDifferent]
+
+                                                         ^
+examples/Esp32JS/mongoose.h:1132:50: note: Function 'mg_url_decode' argument 3 names different: declaration 'to' definition 'dst'.
+int mg_url_decode(const char *s, size_t n, char *to, size_t to_len, int form);
+                                                 ^
+src/http.c:127:58: note: Function 'mg_url_decode' argument 3 names different: declaration 'to' definition 'dst'.
+
+                                                         ^
+src/http.c:127:70: style:inconclusive: Function 'mg_url_decode' argument 4 names different: declaration 'to_len' definition 'dst_len'. [funcArgNamesDifferent]
+
+                                                                     ^
+examples/Esp32JS/mongoose.h:1132:61: note: Function 'mg_url_decode' argument 4 names different: declaration 'to_len' definition 'dst_len'.
+int mg_url_decode(const char *s, size_t n, char *to, size_t to_len, int form);
+                                                            ^
+src/http.c:127:70: note: Function 'mg_url_decode' argument 4 names different: declaration 'to_len' definition 'dst_len'.
+
+                                                                     ^
+src/http.c:128:23: style:inconclusive: Function 'mg_url_decode' argument 5 names different: declaration 'form' definition 'is_form_url_encoded'. [funcArgNamesDifferent]
+
+                      ^
+examples/Esp32JS/mongoose.h:1132:73: note: Function 'mg_url_decode' argument 5 names different: declaration 'form' definition 'is_form_url_encoded'.
+int mg_url_decode(const char *s, size_t n, char *to, size_t to_len, int form);
+                                                                        ^
+src/http.c:128:23: note: Function 'mg_url_decode' argument 5 names different: declaration 'form' definition 'is_form_url_encoded'.
+
+                      ^
+src/http.c:276:49: style:inconclusive: Function 'mg_http_printf_chunk' argument 1 names different: declaration 'cnn' definition 'c'. [funcArgNamesDifferent]
+
+                                                ^
+examples/Esp32JS/mongoose.h:1116:49: note: Function 'mg_http_printf_chunk' argument 1 names different: declaration 'cnn' definition 'c'.
+void mg_http_printf_chunk(struct mg_connection *cnn, const char *fmt, ...);
+                                                ^
+src/http.c:276:49: note: Function 'mg_http_printf_chunk' argument 1 names different: declaration 'cnn' definition 'c'.
+
+                                                ^
+src/http.c:312:49: style:inconclusive: Function 'mg_http_reply' argument 2 names different: declaration 'status_code' definition 'code'. [funcArgNamesDifferent]
+
+                                                ^
+examples/Esp32JS/mongoose.h:1127:48: note: Function 'mg_http_reply' argument 2 names different: declaration 'status_code' definition 'code'.
+void mg_http_reply(struct mg_connection *, int status_code, const char *headers,
+                                               ^
+src/http.c:312:49: note: Function 'mg_http_reply' argument 2 names different: declaration 'status_code' definition 'code'.
+
+                                                ^
+src/http.c:313:32: style:inconclusive: Function 'mg_http_reply' argument 4 names different: declaration 'body_fmt' definition 'fmt'. [funcArgNamesDifferent]
+
+                               ^
+examples/Esp32JS/mongoose.h:1128:32: note: Function 'mg_http_reply' argument 4 names different: declaration 'body_fmt' definition 'fmt'.
+                   const char *body_fmt, ...);
+                               ^
+src/http.c:313:32: note: Function 'mg_http_reply' argument 4 names different: declaration 'body_fmt' definition 'fmt'.
+
+                               ^
+src/http.c:705:44: style:inconclusive: Function 'mg_url_encode' argument 2 names different: declaration 'n' definition 'sl'. [funcArgNamesDifferent]
+
+                                           ^
+examples/Esp32JS/mongoose.h:1133:44: note: Function 'mg_url_encode' argument 2 names different: declaration 'n' definition 'sl'.
+size_t mg_url_encode(const char *s, size_t n, char *buf, size_t len);
+                                           ^
+src/http.c:705:44: note: Function 'mg_url_encode' argument 2 names different: declaration 'n' definition 'sl'.
+
+                                           ^
+src/json.c:31:29: style:inconclusive: Function 'mg_json_get' argument 1 names different: declaration 'buf' definition 's'. [funcArgNamesDifferent]
+
+                            ^
+examples/Esp32JS/mongoose.h:1348:29: note: Function 'mg_json_get' argument 1 names different: declaration 'buf' definition 's'.
+int mg_json_get(const char *buf, int len, const char *path, int *toklen);
+                            ^
+src/json.c:31:29: note: Function 'mg_json_get' argument 1 names different: declaration 'buf' definition 's'.
+
+                            ^
+src/log.c:31:24: style:inconclusive: Function 'mg_log_prefix' argument 1 names different: declaration 'll' definition 'level'. [funcArgNamesDifferent]
+
+                       ^
+examples/Esp32JS/mongoose.h:772:24: note: Function 'mg_log_prefix' argument 1 names different: declaration 'll' definition 'level'.
+bool mg_log_prefix(int ll, const char *file, int line, const char *fname);
+                       ^
+src/log.c:31:24: note: Function 'mg_log_prefix' argument 1 names different: declaration 'll' definition 'level'.
+
+                       ^
+src/sntp.c:60:68: style:inconclusive: Function 'mg_sntp_connect' argument 4 names different: declaration 'fn_data' definition 'fnd'. [funcArgNamesDifferent]
+
+                                                                   ^
+examples/Esp32JS/mongoose.h:1231:68: note: Function 'mg_sntp_connect' argument 4 names different: declaration 'fn_data' definition 'fnd'.
+                                      mg_event_handler_t fn, void *fn_data);
+                                                                   ^
+src/sntp.c:60:68: note: Function 'mg_sntp_connect' argument 4 names different: declaration 'fn_data' definition 'fnd'.
+
+                                                                   ^
+src/str.c:96:29: style:inconclusive: Function 'mg_match' argument 1 names different: declaration 'str' definition 's'. [funcArgNamesDifferent]
+
+                            ^
+examples/Esp32JS/mongoose.h:737:29: note: Function 'mg_match' argument 1 names different: declaration 'str' definition 's'.
+bool mg_match(struct mg_str str, struct mg_str pattern, struct mg_str *caps);
+                            ^
+src/str.c:96:29: note: Function 'mg_match' argument 1 names different: declaration 'str' definition 's'.
+
+                            ^
+src/str.c:96:46: style:inconclusive: Function 'mg_match' argument 2 names different: declaration 'pattern' definition 'p'. [funcArgNamesDifferent]
+
+                                             ^
+examples/Esp32JS/mongoose.h:737:48: note: Function 'mg_match' argument 2 names different: declaration 'pattern' definition 'p'.
+bool mg_match(struct mg_str str, struct mg_str pattern, struct mg_str *caps);
+                                               ^
+src/str.c:96:46: note: Function 'mg_match' argument 2 names different: declaration 'pattern' definition 'p'.
+
+                                             ^
+src/str.c:128:31: style:inconclusive: Function 'mg_globmatch' argument 1 names different: declaration 'pattern' definition 's1'. [funcArgNamesDifferent]
+
+                              ^
+examples/Esp32JS/mongoose.h:738:31: note: Function 'mg_globmatch' argument 1 names different: declaration 'pattern' definition 's1'.
+bool mg_globmatch(const char *pattern, size_t plen, const char *s, size_t n);
+                              ^
+src/str.c:128:31: note: Function 'mg_globmatch' argument 1 names different: declaration 'pattern' definition 's1'.
+
+                              ^
+src/str.c:128:42: style:inconclusive: Function 'mg_globmatch' argument 2 names different: declaration 'plen' definition 'n1'. [funcArgNamesDifferent]
+
+                                         ^
+examples/Esp32JS/mongoose.h:738:47: note: Function 'mg_globmatch' argument 2 names different: declaration 'plen' definition 'n1'.
+bool mg_globmatch(const char *pattern, size_t plen, const char *s, size_t n);
+                                              ^
+src/str.c:128:42: note: Function 'mg_globmatch' argument 2 names different: declaration 'plen' definition 'n1'.
+
+                                         ^
+src/str.c:128:58: style:inconclusive: Function 'mg_globmatch' argument 3 names different: declaration 's' definition 's2'. [funcArgNamesDifferent]
+
+                                                         ^
+examples/Esp32JS/mongoose.h:738:65: note: Function 'mg_globmatch' argument 3 names different: declaration 's' definition 's2'.
+bool mg_globmatch(const char *pattern, size_t plen, const char *s, size_t n);
+                                                                ^
+src/str.c:128:58: note: Function 'mg_globmatch' argument 3 names different: declaration 's' definition 's2'.
+
+                                                         ^
+src/str.c:128:69: style:inconclusive: Function 'mg_globmatch' argument 4 names different: declaration 'n' definition 'n2'. [funcArgNamesDifferent]
+
+                                                                    ^
+examples/Esp32JS/mongoose.h:738:75: note: Function 'mg_globmatch' argument 4 names different: declaration 'n' definition 'n2'.
+bool mg_globmatch(const char *pattern, size_t plen, const char *s, size_t n);
+                                                                          ^
+src/str.c:128:69: note: Function 'mg_globmatch' argument 4 names different: declaration 'n' definition 'n2'.
+
+                                                                    ^
+src/str.c:145:74: style:inconclusive: Function 'mg_split' argument 4 names different: declaration 'delim' definition 'sep'. [funcArgNamesDifferent]
+
+                                                                         ^
+examples/Esp32JS/mongoose.h:740:74: note: Function 'mg_split' argument 4 names different: declaration 'delim' definition 'sep'.
+bool mg_split(struct mg_str *s, struct mg_str *k, struct mg_str *v, char delim);
+                                                                         ^
+src/str.c:145:74: note: Function 'mg_split' argument 4 names different: declaration 'delim' definition 'sep'.
+
+                                                                         ^
+src/str.c:168:49: style:inconclusive: Function 'mg_hex' argument 3 names different: declaration 'dst' definition 'to'. [funcArgNamesDifferent]
+
+                                                ^
+examples/Esp32JS/mongoose.h:741:49: note: Function 'mg_hex' argument 3 names different: declaration 'dst' definition 'to'.
+char *mg_hex(const void *buf, size_t len, char *dst);
+                                                ^
+src/str.c:168:49: note: Function 'mg_hex' argument 3 names different: declaration 'dst' definition 'to'.
+
+                                                ^
+src/timer.c:10:61: style:inconclusive: Function 'mg_timer_init' argument 2 names different: declaration 'timer' definition 't'. [funcArgNamesDifferent]
+
+                                                            ^
+examples/Esp32JS/mongoose.h:811:61: note: Function 'mg_timer_init' argument 2 names different: declaration 'timer' definition 't'.
+void mg_timer_init(struct mg_timer **head, struct mg_timer *timer,
+                                                            ^
+src/timer.c:10:61: note: Function 'mg_timer_init' argument 2 names different: declaration 'timer' definition 't'.
+
+                                                            ^
+src/timer.c:10:73: style:inconclusive: Function 'mg_timer_init' argument 3 names different: declaration 'milliseconds' definition 'ms'. [funcArgNamesDifferent]
+
+                                                                        ^
+examples/Esp32JS/mongoose.h:812:29: note: Function 'mg_timer_init' argument 3 names different: declaration 'milliseconds' definition 'ms'.
+                   uint64_t milliseconds, unsigned flags, void (*fn)(void *),
+                            ^
+src/timer.c:10:73: note: Function 'mg_timer_init' argument 3 names different: declaration 'milliseconds' definition 'ms'.
+
+                                                                        ^
+src/timer.c:22:53: style:inconclusive: Function 'mg_timer_poll' argument 2 names different: declaration 'new_ms' definition 'now_ms'. [funcArgNamesDifferent]
+
+                                                    ^
+examples/Esp32JS/mongoose.h:815:53: note: Function 'mg_timer_poll' argument 2 names different: declaration 'new_ms' definition 'now_ms'.
+void mg_timer_poll(struct mg_timer **head, uint64_t new_ms);
+                                                    ^
+src/timer.c:22:53: note: Function 'mg_timer_poll' argument 2 names different: declaration 'new_ms' definition 'now_ms'.
+
+                                                    ^
+src/http.c:838:10: error: Comparing pointers that point to different objects [comparePointers]
+
+         ^
+examples/Esp32JS/mongoose.h:713:15: note: Variable declared here.
+  const char *ptr;  // Pointer to string data
+              ^
+src/http.c:837:8: note: Address of variable taken here.
+
+       ^
+examples/Esp32JS/mongoose.h:908:18: note: Variable declared here.
+  unsigned char *buf;  // Pointer to stored data
+                 ^
+src/http.c:831:30: note: Address of variable taken here.
+
+                             ^
+src/http.c:838:10: note: Comparing pointers that point to different objects
+
+         ^
+src/http.c:838:60: error: Subtracting pointers that point to different objects [comparePointers]
+
+                                                           ^
+examples/Esp32JS/mongoose.h:908:18: note: Variable declared here.
+  unsigned char *buf;  // Pointer to stored data
+                 ^
+src/http.c:831:30: note: Address of variable taken here.
+
+                             ^
+examples/Esp32JS/mongoose.h:713:15: note: Variable declared here.
+  const char *ptr;  // Pointer to string data
+              ^
+src/http.c:837:8: note: Address of variable taken here.
+
+       ^
+src/http.c:838:60: note: Subtracting pointers that point to different objects
+
+                                                           ^
+src/http.c:535:16: style: Variable 'n' is assigned a value that is never used. [unreadVariable]
+
+               ^
+src/mqtt.c:163:9: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+
+        ^
+src/sock.c:286:10: style: Variable 'n' is assigned a value that is never used. [unreadVariable]
+
+         ^
+src/sock.c:370:13: style: Variable 'rc' is assigned a value that is never used. [unreadVariable]
+
+            ^
+src/ws.c:66:15: style: Variable 'n' is assigned a value that is never used. [unreadVariable]
+
+              ^
+src/net.c:14:27: error: va_list 'tmp' was opened but not closed by va_end(). [va_end_missing]
+
+                          ^
+src/sock.c:526:42: warning: Obsolete function 'alloca' called. In C99 and later it is recommended to use a variable length array instead. [allocaCalled]
+
+                                         ^
+src/sock.c:561:61: style: Clarify calculation precedence for '&' and '?'. [clarifyCalculation]
+
+                                                            ^
+src/sock.c:562:63: style: Clarify calculation precedence for '&' and '?'. [clarifyCalculation]
+
+                                                              ^
+test/unit_test.c:15:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(NULL, 0)) == NULL);
+             ^
+test/unit_test.c:15:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(NULL, 0)) == NULL);
+               ^
+test/unit_test.c:16:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, 0)) == NULL);
+             ^
+test/unit_test.c:16:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, 0)) == NULL);
+               ^
+test/unit_test.c:17:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:17:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:68:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:68:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:71:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:71:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:99:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:99:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:199:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:199:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:206:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:206:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:247:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:247:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:304:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:304:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:334:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:334:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:435:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:435:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:437:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem) - 1U)) != NULL);
+             ^
+test/unit_test.c:437:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem) - 1U)) != NULL);
+               ^
+test/unit_test.c:470:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:470:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:535:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:535:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+test/unit_test.c:568:14: warning: Assert statement modifies 'js'. [assignmentInAssert]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+             ^
+test/unit_test.c:568:16: warning: Assert statement calls a function which may have desired side effects: 'js_create'. [assertWithSideEffect]
+  assert((js = js_create(mem, sizeof(mem))) != NULL);
+               ^
+elk.c:1343:0: style: The function 'js_getbool' is never used. [unusedFunction]
+
+^
+elk.c:1339:0: style: The function 'js_mknum' is never used. [unusedFunction]
+
+^
+elk.c:1358:0: style: The function 'js_type' is never used. [unusedFunction]
+
+^
+test/unit_test.c:462:0: style: The function 'prnt' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+
